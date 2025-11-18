@@ -3,7 +3,26 @@
 **Backend:** FastAPI + C++ (Raw Sockets)  
 **Frontend:** HTML • CSS • JavaScript • LeafletJS • Chart.js  
 
----
+## 📝 **Project Idea**
+
+Modern network diagnostic tools like *traceroute*, *ping*, and *DNS lookup* are powerful but lack:
+
+- Real-time visual output  
+- Geo-mapping of network paths  
+- Consolidated UI for all diagnostics  
+- High-performance backend for accurate results  
+
+The idea behind this project is to build a **single modern platform** that combines  
+**raw socket networking**, **geo-visualization**, and a **web-based interface** to give users:
+
+- 🌍 Visual understanding of packet flow across the world  
+- 📡 Real-time latency monitoring via WebSockets  
+- 🔍 DNS insights with low-level parsing  
+- 🧠 Educational insight into how Internet routing works  
+
+This turns classical CLI-based tools into a beautiful, intuitive, real-time visual web app.
+
+
 
 ## 📘 Overview
 
