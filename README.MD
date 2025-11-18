@@ -1,3 +1,155 @@
+# 🌐 Network Diagnostic Web App  
+### **Traceroute • DNS Lookup • Real-Time Ping • Geo-Visualization**  
+**Backend:** FastAPI + C++ (Raw Sockets)  
+**Frontend:** HTML • CSS • JavaScript • LeafletJS • Chart.js  
+
+---
+
+## 📘 Overview
+
+This project is a full-stack network diagnostic suite that integrates **high-performance C++ networking tools**, a **FastAPI backend**, and a **modern interactive JavaScript frontend**. It enables users to perform and visualize critical network diagnostics, including:
+
+- 🔍 Traceroute with hop-wise Geo-Mapping  
+- 🌐 DNS Record Lookup  
+- 📡 Real-Time Ping with WebSocket streaming  
+- 🗺 Interactive Map Visualization of network paths  
+
+The system is optimized for speed, accuracy, and visual clarity—ideal for learning networking fundamentals or debugging latency and routing issues.
+
+---
+
+# 🚀 Features
+
+## 🛰 Traceroute (C++ + Raw ICMP Sockets)
+
+A custom traceroute tool built using raw ICMP sockets for precise hop discovery.
+
+### **Capabilities**
+- Sends ICMP Echo Requests with incrementing TTL  
+- Measures RTT (milliseconds) for each hop  
+- Performs GeoIP lookup (City, Country, Coordinates)  
+- Visualizes traceroute path on a world map  
+- Displays hop-wise IP, RTT, and geolocation  
+
+### **Tech Used**
+- Raw Sockets: `AF_INET`, `SOCK_RAW`  
+- ICMP packet crafting & parsing  
+- GeoIP API via Python `requests`  
+- FastAPI to execute the C++ binary  
+
+---
+
+## 🔐 DNS Lookup (C++ + libresolv)
+
+A high-performance DNS resolver built using `res_query()` and `libresolv`.
+
+### **Supported Record Types**
+| Type | Purpose |
+|------|---------|
+| **A / AAAA** | IPv4 & IPv6 Address Records |
+| **CNAME** | Canonical Domain Name |
+| **MX** | Mail Exchange Servers |
+| **NS** | Authoritative Name Servers |
+| **TXT** | Arbitrary text (SPF, domain verification, etc.) |
+
+### **Tech Used**
+- `res_query()`, `ns_msg`, `ns_rr` structures  
+- Low-level DNS packet parsing  
+- FastAPI wrapper returning JSON responses  
+
+---
+
+## 📡 Real-Time Ping (C++ Raw Sockets + WebSockets)
+
+A continuous ICMP ping tool with live streaming to the frontend.
+
+### **Features**
+- Continuous RTT sampling  
+- FastAPI WebSocket endpoint  
+- Chart.js real-time dynamic graphs  
+- Minimum / Average / Maximum latency calculation  
+
+### **Tech Used**
+- ICMP Echo packet creation  
+- Async WebSockets for real-time data feed  
+- Chart.js for smooth animated graphs  
+
+---
+
+## 🗺 Interactive Frontend (LeafletJS + Chart.js)
+
+A clean, modern frontend offering real-time maps and charts.
+
+### **LeafletJS**
+- Displays traceroute hops on a world map  
+- Connects hops with polylines  
+- Popup showing hop details (RTT, Location, IP)  
+
+### **Chart.js**
+- Real-time latency graph  
+- Smooth animations  
+- Auto-updating line chart during ping  
+
+### **Additional Frontend Stack**
+- Vanilla JavaScript (ES6)  ```markdown
+# Network Diagnostic Web App  
+Traceroute • DNS Lookup • Real-Time Ping • Map Visualization  
+Backend: FastAPI + C++ Tools  
+Frontend: HTML + CSS + JavaScript + LeafletJS + Chart.js
+
+---
+
+## 🚀 Features
+
+### ✅ Traceroute (C++ raw sockets)
+- ICMP-based hop discovery  
+- GeoIP lookup per hop  ```markdown
+# Network Diagnostic Web App  
+Traceroute • DNS Lookup • Real-Time Ping • Map Visualization  
+Backend: FastAPI + C++ Tools  
+Frontend: HTML + CSS + JavaScript + LeafletJS + Chart.js
+
+---
+
+## 🚀 Features
+
+### ✅ Traceroute (C++ raw sockets)
+- ICMP-based hop discovery  
+- GeoIP lookup per hop  
+- Visualized on Leaflet map  
+- Hop table with RTT, city, and country  
+
+### ✅ DNS Lookup (C++ resolver)
+- A / AAAA  
+- CNAME  
+- MX  
+- NS  
+- TXT  
+- Parsed with `res_query` and `libresolv`
+
+### ✅ Real-Time Ping (C++ raw sockets + WebSockets)
+- Continuous ICMP echo  
+- Live RTT streaming through WebSockets  
+- Chart.js visualization  
+- Calculates Min / Avg / Max RTT  
+
+---
+
+## 📁 Project Structure
+
+```
+
+traceroute-visualizer/
+│
+├── backend/
+│   ├── main.py
+│   ├── traceroute_cpp
+│   ├── dns_tool
+│   ├── ping_tool
+│   └── *.cpp sources
+│
+├── frontend/
+│   ├── index.html
 ```markdown
 # Network Diagnostic Web App  
 Traceroute • DNS Lookup • Real-Time Ping • Map Visualization  
@@ -45,6 +197,157 @@ traceroute-visualizer/
 │
 ├── frontend/
 │   ├── index.html
+```markdown
+# Network Diagnostic Web App  
+Traceroute • DNS Lookup • Real-Time Ping • Map Visualization  
+Backend: FastAPI + C++ Tools  
+Frontend: HTML + CSS + JavaScript + LeafletJS + Chart.js
+
+---
+
+## 🚀 Features
+
+### ✅ Traceroute (C++ raw sockets)
+- ICMP-based hop discovery  
+- GeoIP lookup per hop  
+- Visualized on Leaflet map  
+- Hop table with RTT, city, and country  
+
+### ✅ DNS Lookup (C++ resolver)
+- A / AAAA  
+- CNAME  
+- MX  
+- NS  
+- TXT  
+- Parsed with `res_query` and `libresolv`
+
+### ✅ Real-Time Ping (C++ raw sockets + WebSockets)
+- Continuous ICMP echo  
+- Live RTT streaming through WebSockets  
+- Chart.js visualization  
+- Calculates Min / Avg / Max RTT  
+
+---
+
+## 📁 Project Structure
+
+```
+
+traceroute-visualizer/
+│
+├── backend/
+│   ├── main.py
+│   ├── traceroute_cpp
+│   ├── dns_tool
+│   ├── ping_tool
+│   └── *.cpp sources
+│
+├── frontend/
+│   ├── index.html
+
+- Visualized on Leaflet map  
+- Hop table with RTT, city, and country  
+
+### ✅ DNS Lookup (C++ resolver)
+- A / AAAA  
+- CNAME  
+- MX  
+- NS  
+- TXT  
+- Parsed with `res_query` and `libresolv`
+
+### ✅ Real-Time Ping (C++ raw sockets + WebSockets)
+- Continuous ICMP echo  
+- Live RTT streaming through WebSockets  
+- Chart.js visualization  
+- Calculates Min / Avg / Max RTT  
+
+---
+
+## 📁 Project Structure
+
+```
+
+traceroute-visualizer/
+│
+├── backend/
+│   ├── main.py
+│   ├── traceroute_cpp
+│   ├── dns_tool
+│   ├── ping_tool
+│   └── *.cpp sources
+│
+├── frontend/
+│   ├── index.html
+```markdown
+# Network Diagnostic Web App  
+Traceroute • DNS Lookup • Real-Time Ping • Map Visualization  
+Backend: FastAPI + C++ Tools  
+Frontend: HTML + CSS + JavaScript + LeafletJS + Chart.js
+
+---
+
+## 🚀 Features
+
+### ✅ Traceroute (C++ raw sockets)
+- ICMP-based hop discovery  
+- GeoIP lookup per hop  
+- Visualized on Leaflet map  
+- Hop table with RTT, city, and country  
+
+### ✅ DNS Lookup (C++ resolver)
+- A / AAAA  
+- CNAME  
+- MX  
+- NS  
+- TXT  
+- Parsed with `res_query` and `libresolv`
+
+### ✅ Real-Time Ping (C++ raw sockets + WebSockets)
+- Continuous ICMP echo  
+- Live RTT streaming through WebSockets  
+- Chart.js visualization  
+- Calculates Min / Avg / Max RTT  
+
+---
+
+## 📁 Project Structure
+
+```
+
+traceroute-visualizer/
+│
+├── backend/
+│   ├── main.py
+│   ├── traceroute_cpp
+│   ├── dns_tool
+│   ├── ping_tool
+│   └── *.cpp sources
+│
+├── frontend/
+│   ├── index.html
+
+- HTML5 + CSS3  
+- `fetch()` for REST APIs  
+- WebSocket for ping stream  
+
+---
+
+# 📁 Project Structure
+
+```
+
+traceroute-visualizer/
+│
+├── backend/
+│   ├── main.py
+│   ├── traceroute_cpp
+│   ├── dns_tool
+│   ├── ping_tool
+│   └── *.cpp sources
+│
+├── frontend/
+│   ├── index.html
 │   ├── style.css
 │   └── app.js
 │
@@ -57,7 +360,54 @@ traceroute-visualizer/
 ## 🔧 Installation & Setup
 
 ### 1. Clone the repository
-```bash
+```bash```markdown
+# Network Diagnostic Web App  
+Traceroute • DNS Lookup • Real-Time Ping • Map Visualization  
+Backend: FastAPI + C++ Tools  
+Frontend: HTML + CSS + JavaScript + LeafletJS + Chart.js
+
+---
+
+## 🚀 Features
+
+### ✅ Traceroute (C++ raw sockets)
+- ICMP-based hop discovery  
+- GeoIP lookup per hop  
+- Visualized on Leaflet map  
+- Hop table with RTT, city, and country  
+
+### ✅ DNS Lookup (C++ resolver)
+- A / AAAA  
+- CNAME  
+- MX  
+- NS  
+- TXT  
+- Parsed with `res_query` and `libresolv`
+
+### ✅ Real-Time Ping (C++ raw sockets + WebSockets)
+- Continuous ICMP echo  
+- Live RTT streaming through WebSockets  
+- Chart.js visualization  
+- Calculates Min / Avg / Max RTT  
+
+---
+
+## 📁 Project Structure
+
+```
+
+traceroute-visualizer/
+│
+├── backend/
+│   ├── main.py
+│   ├── traceroute_cpp
+│   ├── dns_tool
+│   ├── ping_tool
+│   └── *.cpp sources
+│
+├── frontend/
+│   ├── index.html
+
 git clone <your-repo>
 cd traceroute-visualizer
 ````
@@ -210,17 +560,12 @@ sudo setcap cap_net_raw+ep backend/traceroute_cpp
 ```
 
 ---
-
-## 📜 License
-
-MIT License
-
----
-
-## 👨‍💻 Author
-
-Satvik Singh
-
+## 👨‍💻 Group Members - Group 22
+- Satvik Singh (2023494)
+- Rahul Kumar (2023420)
+- Praveer Singh Chauhan (2023397)
+- Rishabh Kumar (2023436)
+- Sahil Amrawat (2023462)
 ````
 
 ---
