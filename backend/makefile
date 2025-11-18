@@ -1,9 +1,8 @@
 # Compiler & flags
 CXX = g++
-CXXFLAGS = -O2 -Wall
+CXXFLAGS = -O2 -Wall -Wno-switch -Wno-unused-variable
 
-# Directories
-BACKEND_DIR = backend
+
 
 # Source files
 TRACER_SRC = tracer.cpp
@@ -13,9 +12,9 @@ DNS_TOOL_SRC = dns_tool.cpp
 PING_SRC = ping_tool.cpp
 
 # Binaries
-TRACER_BIN = $(BACKEND_DIR)/traceroute_cpp
-DNS_BIN = $(BACKEND_DIR)/dns_tool
-PING_BIN = $(BACKEND_DIR)/ping_tool
+TRACER_BIN = traceroute_cpp
+DNS_BIN = dns_tool
+PING_BIN = ping_tool
 
 # Build all tools
 all: $(TRACER_BIN) $(DNS_BIN) $(PING_BIN)

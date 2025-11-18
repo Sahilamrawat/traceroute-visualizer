@@ -1,29 +1,23 @@
-#include <iostream>
+#include "dns_lookup_basic.hpp"
 #include <netdb.h>
 #include <arpa/inet.h>
-#include <vector>
 #include <string>
+#include <vector>
 
-using namespace std;
+std::vector<Record> dns_lookup_basic(const std::string& host) {
+    std::vector<Record> results;
 
-struct Record { 
-    string type;
-    string value;
-};
-
-vector<Record> dns_lookup_basic(const string& host) {
-    vector<Record> results;
     addrinfo hints{}, *res, *p;
-    hints.ai_family = AF_UNSPEC;  // Both IPv4 + IPv6
+    hints.ai_family = AF_UNSPEC;
 
-    if (getaddrinfo(host.c_str(), NULL, &hints, &res) != 0) 
+    if (getaddrinfo(host.c_str(), nullptr, &hints, &res) != 0)
         return results;
 
     char ipstr[INET6_ADDRSTRLEN];
 
-    for (p = res; p != NULL; p = p->ai_next) {
+    for (p = res; p != nullptr; p = p->ai_next) {
         void* addr;
-        string type;
+        std::string type;
 
         if (p->ai_family == AF_INET) {
             sockaddr_in* ipv4 = (sockaddr_in*)p->ai_addr;
@@ -36,7 +30,7 @@ vector<Record> dns_lookup_basic(const string& host) {
         }
 
         inet_ntop(p->ai_family, addr, ipstr, sizeof(ipstr));
-        results.push_back({type, string(ipstr)});
+        results.push_back(Record{type, std::string(ipstr)});
     }
 
     freeaddrinfo(res);
